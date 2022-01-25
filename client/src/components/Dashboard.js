@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ProjectItem from "./Project/ProjectItem";
 
 class Dashboard extends Component {
     render() {
@@ -6,6 +7,8 @@ class Dashboard extends Component {
             <div>
                 <h1>Welcome to the Dashboard</h1>
                 <p>Enjoy!</p>
+                <ProjectItem />
+                <ProjectItem />
             </div>
         );
     }
