@@ -1,6 +1,7 @@
 package com.nv.ppmtool.web;
 
 import com.nv.ppmtool.domain.Project;
+import com.nv.ppmtool.services.MapValidationErrorService;
 import com.nv.ppmtool.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,19 +22,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/project")
 public class ProjectController {
 
+    @Autowired private MapValidationErrorService mapValidationErrorService;
     @Autowired private ProjectService projectService;
 
     @PostMapping("")
-    public ResponseEntity<?> createNewProject(
-            @Valid @RequestBody Project project, BindingResult result) {
+    public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result) {
 
         if (result.hasErrors())
-            return new ResponseEntity<Map<String, String>>(
-                    result.getFieldErrors().stream()
-                        .collect(Collectors.toMap(
-                                FieldError::getField,
-                                FieldError::getDefaultMessage)),
-                    HttpStatus.BAD_REQUEST);
+            return mapValidationErrorService.mapValidationService(result);
 
         Project savedProject = projectService.saveOrUpdateProject(project);
 
