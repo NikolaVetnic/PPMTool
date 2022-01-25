@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProjectService {
 
+
     @Autowired private ProjectRepository projectRepository;
+
 
     public Project saveOrUpdateProject(Project project) {
 
@@ -23,19 +25,34 @@ public class ProjectService {
         }
     }
 
+
     public Project findProjectByIdentifier(String projectIdentifier) {
 
         Project project = projectRepository.findByProjectIdentifier(projectIdentifier.toUpperCase());
 
         if (project == null)
             throw new ProjectIdException(
-                    String.format("Project ID '%s' doesn't exist",
+                    String.format("Project with ID '%s' doesn't exist",
                             projectIdentifier.toUpperCase()));
 
         return project;
     }
 
+
     public Iterable<Project> findAllProjects() {
         return projectRepository.findAll();
+    }
+
+
+    public void deleteProjectByIdentifier(String projectIdentifier) {
+
+        Project project = findProjectByIdentifier(projectIdentifier.toUpperCase());
+
+        if (project == null)
+            throw new ProjectIdException(
+                    String.format("Cannot delete - project with ID '%s' doesn't exist",
+                            projectIdentifier.toUpperCase()));
+
+        projectRepository.delete(project);
     }
 }

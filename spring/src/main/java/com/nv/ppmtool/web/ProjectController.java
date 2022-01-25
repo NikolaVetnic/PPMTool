@@ -15,8 +15,10 @@ import javax.validation.Valid;
 @RequestMapping("/api/project")
 public class ProjectController {
 
+
     @Autowired private MapValidationErrorService mapValidationErrorService;
     @Autowired private ProjectService projectService;
+
 
     @PostMapping("")
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result) {
@@ -29,6 +31,7 @@ public class ProjectController {
         return new ResponseEntity<Project>(savedProject, HttpStatus.CREATED);
     }
 
+
     @GetMapping("/{projectIdentifier}")
     public ResponseEntity<?> getProjectByIdentifier(@PathVariable String projectIdentifier) {
 
@@ -37,8 +40,20 @@ public class ProjectController {
         return new ResponseEntity<Project>(project, HttpStatus.OK);
     }
 
+
     @GetMapping("/all")
     public Iterable<Project> getAllProjects() {
         return projectService.findAllProjects();
+    }
+
+
+    @DeleteMapping("/{projectIdentifier}")
+    public ResponseEntity<?> deleteProject(@PathVariable String projectIdentifier) {
+
+        projectService.deleteProjectByIdentifier(projectIdentifier);
+
+        return new ResponseEntity<String>(
+                String.format("Project with ID '%s' deleted.", projectIdentifier),
+                HttpStatus.OK);
     }
 }
