@@ -6,4 +6,4 @@
 Very important branches:
 * pt0031 : Create Redux Store
 * pt0032 : Create Project from React
-* pt0033 : xxx
+* pt0033 : Create validation errors from Redux
