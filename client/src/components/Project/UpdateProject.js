@@ -1,6 +1,15 @@
+import { connect } from "react-redux";
+import { getProject } from "../../actions/projectActions";
+import classnames from "classnames";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 class UpdateProject extends Component {
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.props.getProject(id, this.props.history);
+    }
+
     render() {
         return (
             <div className="register">
@@ -63,4 +72,13 @@ class UpdateProject extends Component {
     }
 }
 
-export default UpdateProject;
+UpdateProject.propTypes = {
+    getProject: PropTypes.func.isRequired,
+    project: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+    project: state.project.project,
+});
+
+export default connect(mapStateToProps, { getProject })(UpdateProject);
