@@ -33,6 +33,7 @@ class AddProject extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
         const newProject = {
             projectName: this.state.projectName,
             projectIdentifier: this.state.projectIdentifier,
@@ -40,6 +41,7 @@ class AddProject extends Component {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
         };
+
         this.props.createProject(newProject, this.props.history);
     }
 

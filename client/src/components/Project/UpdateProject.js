@@ -14,6 +14,7 @@ class UpdateProject extends Component {
             description: "",
             startDate: "",
             endDate: "",
+            errors: {},
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,6 +26,12 @@ class UpdateProject extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors,
+            });
+        }
+
         const {
             id,
             projectName,
@@ -64,25 +71,37 @@ class UpdateProject extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="register">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
                             <h5 className="display-4 text-center">
-                                Update Project form
+                                Update Project Form
                             </h5>
                             <hr />
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input
                                         type="text"
-                                        className="form-control form-control-lg "
+                                        className={classnames(
+                                            "form-control form-control-lg",
+                                            {
+                                                "is-invalid":
+                                                    errors.projectName,
+                                            }
+                                        )}
                                         placeholder="Project Name"
                                         name="projectName"
                                         value={this.state.projectName}
                                         onChange={this.onChange}
                                     />
+                                    {errors.projectName && (
+                                        <div className="invalid-feedback">
+                                            {errors.projectName}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="form-group">
                                     <input
@@ -96,12 +115,23 @@ class UpdateProject extends Component {
                                 </div>
                                 <div className="form-group">
                                     <textarea
-                                        className="form-control form-control-lg"
+                                        className={classnames(
+                                            "form-control form-control-lg",
+                                            {
+                                                "is-invalid":
+                                                    errors.description,
+                                            }
+                                        )}
                                         placeholder="Project Description"
                                         name="description"
                                         value={this.state.description}
                                         onChange={this.onChange}
                                     ></textarea>
+                                    {errors.description && (
+                                        <div className="invalid-feedback">
+                                            {errors.description}
+                                        </div>
+                                    )}
                                 </div>
                                 <h6>Start Date</h6>
                                 <div className="form-group">
@@ -139,11 +169,13 @@ class UpdateProject extends Component {
 
 UpdateProject.propTypes = {
     createProject: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
     getProject: PropTypes.func.isRequired,
     project: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+    errors: state.errors,
     project: state.project.project,
 });
 
