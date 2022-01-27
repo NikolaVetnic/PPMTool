@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
 import React, { Component } from "react";
 import store from "./store";
+import UpdateProject from "./components/Project/UpdateProject";
 
 function App() {
     return (
@@ -16,6 +17,11 @@ function App() {
                     <Header />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/addProject" component={AddProject} />
+                    <Route
+                        exact
+                        path="/updateProject/:id"
+                        component={UpdateProject}
+                    />
                 </div>
             </Router>
         </Provider>
