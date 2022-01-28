@@ -1,4 +1,4 @@
-import { GET_ERRORS, GET_PROJECT, GET_PROJECTS } from "./types";
+import { DELETE_PROJECT, GET_ERRORS, GET_PROJECT, GET_PROJECTS } from "./types";
 import axios from "axios";
 
 export const createProject = (project, history) => async (dispatch) => {
@@ -18,6 +18,14 @@ export const createProject = (project, history) => async (dispatch) => {
             payload: err.response.data,
         });
     }
+};
+
+export const deleteProject = (id) => async (dispatch) => {
+    await axios.delete(`http://localhost:8080/api/project/${id}`);
+    dispatch({
+        type: DELETE_PROJECT,
+        payload: id,
+    });
 };
 
 export const getProjects = () => async (dispatch) => {

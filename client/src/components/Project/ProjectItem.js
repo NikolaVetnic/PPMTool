@@ -1,7 +1,14 @@
+import { connect } from "react-redux";
+import { deleteProject } from "../../actions/projectActions";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 class ProjectItem extends Component {
+    onDeleteClick = (id) => {
+        this.props.deleteProject(id);
+    };
+
     render() {
         const { project } = this.props;
         return (
@@ -39,15 +46,19 @@ class ProjectItem extends Component {
                                         </i>
                                     </li>
                                 </Link>
-                                <a href="">
-                                    <li className="list-group-item delete">
-                                        <i className="fa fa-minus-circle pr-1">
-                                            <span className="pr-caption">
-                                                &nbsp;&nbsp;Delete Project
-                                            </span>
-                                        </i>
-                                    </li>
-                                </a>
+                                <li
+                                    className="list-group-item delete"
+                                    onClick={this.onDeleteClick.bind(
+                                        this,
+                                        project.projectIdentifier
+                                    )}
+                                >
+                                    <i className="fa fa-minus-circle pr-1">
+                                        <span className="pr-caption">
+                                            &nbsp;&nbsp;Delete Project
+                                        </span>
+                                    </i>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -57,4 +68,8 @@ class ProjectItem extends Component {
     }
 }
 
-export default ProjectItem;
+ProjectItem.propTypes = {
+    deleteProject: PropTypes.func.isRequired,
+};
+
+export default connect(null, { deleteProject })(ProjectItem);
