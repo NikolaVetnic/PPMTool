@@ -41,13 +41,8 @@ public class Project {
 
     public Project() { }
 
-    @PrePersist protected void onCreate() {
-        this.created_At = new Date();
-    }
-
-    @PreUpdate protected void onUpdate() {
-        this.updated_At = new Date();
-    }
+    @PrePersist protected void onCreate()   { this.created_At = new Date(); }
+    @PreUpdate protected void onUpdate()    { this.updated_At = new Date(); }
 
     public Long getId()                     { return id;                }
     public String getProjectName()          { return projectName;       }
