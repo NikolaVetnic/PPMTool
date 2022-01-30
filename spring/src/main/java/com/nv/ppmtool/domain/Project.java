@@ -1,6 +1,7 @@
 package com.nv.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.org.glassfish.gmbal.Description;
 
 import javax.persistence.*;
@@ -39,6 +40,7 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
+    @JsonIgnore
     @OneToOne(
             fetch = FetchType.EAGER,    // upon loading project the Backlog is readily available
             cascade = CascadeType.ALL,  // Project is the OWNING side, when Project is deleted Backlog is as well
