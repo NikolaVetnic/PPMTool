@@ -12,4 +12,4 @@ Very important branches:
 * pt0031 : Create Redux Store
 * pt0032 : Create Project from React
 * pt0033 : Create validation errors from Redux
-* pt0052 : Get Project Backlog, the happy path (FetchType optimisation)
+* pt0052 : Get Project Backlog, the happy path (optimisation via @JsonIgnore)
