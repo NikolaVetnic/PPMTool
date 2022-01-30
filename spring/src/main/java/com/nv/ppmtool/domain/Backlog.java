@@ -13,7 +13,7 @@ public class Backlog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer PTSequence = 0;
+    private Integer projectTaskSequence = 0;
 
     private String projectIdentifier;
 
@@ -27,13 +27,17 @@ public class Backlog {
 
     public Backlog() { }
 
+    public void incPTSequence() {
+        projectTaskSequence++;
+    }
+
     public Long getId()                         { return id;                }
-    public Integer getPTSequence()              { return PTSequence;        }
+    public Integer getProjectTaskSequence()              { return projectTaskSequence;        }
     public String getProjectIdentifier()        { return projectIdentifier; }
     public Project getProject()                 { return project;           }
     public List<ProjectTask> getProjectTasks()  { return projectTasks;      }
 
-    public void setPTSequence(Integer PTSequence)               { this.PTSequence = PTSequence;                 }
+    public void setProjectTaskSequence(Integer projectTaskSequence)               { this.projectTaskSequence = projectTaskSequence;                 }
     public void setProjectIdentifier(String projectIdentifier)  { this.projectIdentifier = projectIdentifier;   }
     public void setProject(Project project)                     { this.project = project;                       }
     public void setProjectTasks(List<ProjectTask> projectTasks) { this.projectTasks = projectTasks;             }
