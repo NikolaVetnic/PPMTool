@@ -39,6 +39,12 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
+    @OneToOne(
+            fetch = FetchType.EAGER,    // upon loading project the Backlog is readily available
+            cascade = CascadeType.ALL,  // Project is the OWNING side, when Project is deleted Backlog is as well
+            mappedBy = "project")       // same attribute name given to the Project in the Backlog entity
+    private Backlog backlog;
+
     public Project() { }
 
     @PrePersist protected void onCreate()   { this.created_At = new Date(); }
@@ -52,6 +58,7 @@ public class Project {
     public Date getEndDate()                { return endDate;           }
     public Date getCreated_At()             { return created_At;        }
     public Date getUpdated_At()             { return updated_At;        }
+    public Backlog getBacklog()             { return backlog;           }
 
     public void setId(Long id) {
         this.id = id;
@@ -84,4 +91,6 @@ public class Project {
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
     }
+
+    public void setBacklog(Backlog backlog) { this.backlog = backlog; }
 }

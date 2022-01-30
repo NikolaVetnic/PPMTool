@@ -39,7 +39,7 @@ public class ProjectTask {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
-    public ProjectTask() {}
+    public ProjectTask() { }
 
     @PrePersist protected void onCreate()   { this.created_At = new Date(); }
     @PreUpdate protected void onUpdate()    { this.updated_At = new Date(); }
