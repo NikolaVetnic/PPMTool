@@ -1,6 +1,7 @@
 package com.nv.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -39,6 +40,13 @@ public class ProjectTask {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
+    @JoinColumn(name="backlog_id")
+    @JsonIgnore
+    @ManyToOne(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.REFRESH)  // deleting ProjectTask refreshes parent Backlog
+    private Backlog backlog;
+
     public ProjectTask() { }
 
     @PrePersist protected void onCreate()   { this.created_At = new Date(); }
@@ -54,46 +62,18 @@ public class ProjectTask {
     public String getProjectIdentifier()    { return projectIdentifier;     }
     public Date getCreated_At()             { return created_At;            }
     public Date getUpdated_At()             { return updated_At;            }
+    public Backlog getBacklog()             { return backlog;               }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setProjectSequence(String projectSequence) {
-        this.projectSequence = projectSequence;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public void setAcceptanceCriteria(String acceptanceCriteria) {
-        this.acceptanceCriteria = acceptanceCriteria;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public void setProjectIdentifier(String projectIdentifier) {
-        this.projectIdentifier = projectIdentifier;
-    }
-
-    public void setCreated_At(Date created_At) {
-        this.created_At = created_At;
-    }
-
-    public void setUpdated_At(Date updated_At) {
-        this.updated_At = updated_At;
-    }
+    public void setProjectSequence(String projectSequence)          { this.projectSequence = projectSequence;       }
+    public void setSummary(String summary)                          { this.summary = summary;                       }
+    public void setAcceptanceCriteria(String acceptanceCriteria)    { this.acceptanceCriteria = acceptanceCriteria; }
+    public void setStatus(String status)                            { this.status = status;                         }
+    public void setPriority(Integer priority)                       { this.priority = priority;                     }
+    public void setDueDate(Date dueDate)                            { this.dueDate = dueDate;                       }
+    public void setProjectIdentifier(String projectIdentifier)      { this.projectIdentifier = projectIdentifier;   }
+    public void setCreated_At(Date created_At)                      { this.created_At = created_At;                 }
+    public void setUpdated_At(Date updated_At)                      { this.updated_At = updated_At;                 }
+    public void setBacklog(Backlog backlog)                         { this.backlog = backlog;                       }
 
     @Override
     public String toString() {

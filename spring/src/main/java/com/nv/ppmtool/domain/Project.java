@@ -60,37 +60,12 @@ public class Project {
     public Date getUpdated_At()             { return updated_At;        }
     public Backlog getBacklog()             { return backlog;           }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public void setProjectIdentifier(String projectIdentifier) {
-        this.projectIdentifier = projectIdentifier;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setCreated_At(Date created_At) {
-        this.created_At = created_At;
-    }
-
-    public void setUpdated_At(Date updated_At) {
-        this.updated_At = updated_At;
-    }
-
-    public void setBacklog(Backlog backlog) { this.backlog = backlog; }
+    public void setProjectName(String projectName)              { this.projectName = projectName;               }
+    public void setProjectIdentifier(String projectIdentifier)  { this.projectIdentifier = projectIdentifier;   }
+    public void setDescription(String description)              { this.description = description;               }
+    public void setStartDate(Date startDate)                    { this.startDate = startDate;                   }
+    public void setEndDate(Date endDate)                        { this.endDate = endDate;                       }
+    public void setCreated_At(Date created_At)                  { this.created_At = created_At;                 }
+    public void setUpdated_At(Date updated_At)                  { this.updated_At = updated_At;                 }
+    public void setBacklog(Backlog backlog)                     { this.backlog = backlog;                       }
 }
