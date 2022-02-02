@@ -28,8 +28,6 @@ public class ProjectTask {
 
     private Date dueDate;
 
-    // ManyToOne with Backlog
-
     @Column(updatable = false)
     private String projectIdentifier;
 
