@@ -32,6 +32,10 @@ img {
     color: red;
 }
 
+.mb3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .landing {
     position: relative;
     /* background: url("../img/showcase.jpg") no-repeat; */
