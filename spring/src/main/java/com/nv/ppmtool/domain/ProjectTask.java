@@ -42,9 +42,7 @@ public class ProjectTask {
 
     @JoinColumn(name="backlog_id")
     @JsonIgnore
-    @ManyToOne(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.REFRESH)  // deleting ProjectTask refreshes parent Backlog
+    @ManyToOne(fetch = FetchType.EAGER)
     private Backlog backlog;
 
     public ProjectTask() { }

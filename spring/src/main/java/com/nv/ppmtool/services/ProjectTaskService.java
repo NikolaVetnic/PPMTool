@@ -9,7 +9,6 @@ import com.nv.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Locale;
 
 @Service
@@ -97,10 +96,6 @@ public class ProjectTaskService {
     public void deleteProjectTaskByProjectSequence(String backlog_id, String pt_id) {
 
         ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id);
-
-        Backlog backlog = projectTask.getBacklog();
-        backlog.getProjectTasks().remove(projectTask);
-        backlogRepository.save(backlog);
 
         projectTaskRepository.delete(projectTask);
     }
