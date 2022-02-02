@@ -21,8 +21,6 @@ public class ProjectTaskService {
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
 
-        // exceptions - project not found
-
         try {
             // ProjectTasks to be added to a specific project, project != null -> Backlog exists
             Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier.toUpperCase());
@@ -58,5 +56,12 @@ public class ProjectTaskService {
             throw new ProjectNotFoundException("Project not found");
 
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+    }
+
+    public ProjectTask findProjectTaskByProjectSequence(String backlog_id, String pt_id) {
+
+        // make sure we are searching on the right backlog
+
+        return projectTaskRepository.findByProjectSequence(pt_id);
     }
 }
