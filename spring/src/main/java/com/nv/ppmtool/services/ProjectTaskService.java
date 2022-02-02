@@ -1,7 +1,6 @@
 package com.nv.ppmtool.services;
 
 import com.nv.ppmtool.domain.Backlog;
-import com.nv.ppmtool.domain.Project;
 import com.nv.ppmtool.domain.ProjectTask;
 import com.nv.ppmtool.exceptions.ProjectNotFoundException;
 import com.nv.ppmtool.repositories.BacklogRepository;
@@ -79,5 +78,14 @@ public class ProjectTaskService {
                     pt_id.toUpperCase(), backlog_id.toUpperCase(Locale.ROOT)));
 
         return projectTask;
+    }
+
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
+
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id.toUpperCase());
+
+        projectTask = updatedTask;
+
+        return projectTaskRepository.save(projectTask);
     }
 }
