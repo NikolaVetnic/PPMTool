@@ -1,5 +1,12 @@
 # Read Me
 
+SECTIONS
+1. Introduction
+2. Spring Back-End. Basic CRUD operations. Project entity: `branches pt0007 - pt0018`
+3. React & Redux Front-End. Project entity CRUD operations: `branches pt0023 - pt0045`
+4. Spring Back-End. Add ProjectTasks: branches `pt0046 - pt0059`
+5. React & Redux Front-End. Add PRojectTasks: branches `pt0062 - `
+
 Stop points:
 * 20220125 1500 : next up pt20, latest branch pt0018, master up to date
 * 20220126 0041 : next up pt32, latest branch pt0031, master up to date
