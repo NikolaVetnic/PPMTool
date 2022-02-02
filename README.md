@@ -14,3 +14,4 @@ Very important branches:
 * pt0033 : Create validation errors from Redux
 * pt0052 : Get Project Backlog, the happy path (optimisation via @JsonIgnore)
 * pt0054 : Handle ProjectNotFoundException (handling exceptions summary)
+* pt0062 : Types and Reducers for ProjectTasks (setting up types and reducers summary)
