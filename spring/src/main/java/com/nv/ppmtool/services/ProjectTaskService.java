@@ -10,6 +10,8 @@ import com.nv.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 public class ProjectTaskService {
 
@@ -53,15 +55,29 @@ public class ProjectTaskService {
     public Iterable<ProjectTask> findBacklogById(String id) {
 
         if (projectRepository.findByProjectIdentifier(id.toUpperCase()) == null)
-            throw new ProjectNotFoundException("Project not found");
+            throw new ProjectNotFoundException("Project with id '" + id.toUpperCase() + "' not found");
 
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
 
     public ProjectTask findProjectTaskByProjectSequence(String backlog_id, String pt_id) {
 
-        // make sure we are searching on the right backlog
+        // make sure we are searching on an existing backlog
+        if (backlogRepository.findByProjectIdentifier(backlog_id) == null)
+            throw new ProjectNotFoundException("Project with id '" + backlog_id.toUpperCase() + "' not found");
 
-        return projectTaskRepository.findByProjectSequence(pt_id);
+        // make sure that our task exists
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+
+        if (projectTask == null)
+            throw new ProjectNotFoundException("ProjectTask with id '" + pt_id.toUpperCase() + "' not found");
+
+        // make sure that the backlog/project id in the path corresponds to the right project
+        if (!projectTask.getProjectIdentifier().equals(backlog_id.toUpperCase()))
+            throw new ProjectNotFoundException(String.format(
+                    "ProjectTask with id '%s' does not belong to Project with id '%s'",
+                    pt_id.toUpperCase(), backlog_id.toUpperCase(Locale.ROOT)));
+
+        return projectTask;
     }
 }
