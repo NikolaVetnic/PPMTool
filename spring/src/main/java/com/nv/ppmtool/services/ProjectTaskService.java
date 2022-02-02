@@ -9,6 +9,7 @@ import com.nv.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Locale;
 
 @Service
@@ -51,6 +52,7 @@ public class ProjectTaskService {
         }
     }
 
+
     public Iterable<ProjectTask> findBacklogById(String id) {
 
         if (projectRepository.findByProjectIdentifier(id.toUpperCase()) == null)
@@ -58,6 +60,7 @@ public class ProjectTaskService {
 
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
+
 
     public ProjectTask findProjectTaskByProjectSequence(String backlog_id, String pt_id) {
 
@@ -80,12 +83,25 @@ public class ProjectTaskService {
         return projectTask;
     }
 
+
     public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
 
-        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id.toUpperCase());
+        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id);
 
         projectTask = updatedTask;
 
         return projectTaskRepository.save(projectTask);
+    }
+
+
+    public void deleteProjectTaskByProjectSequence(String backlog_id, String pt_id) {
+
+        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id);
+
+        Backlog backlog = projectTask.getBacklog();
+        backlog.getProjectTasks().remove(projectTask);
+        backlogRepository.save(backlog);
+
+        projectTaskRepository.delete(projectTask);
     }
 }

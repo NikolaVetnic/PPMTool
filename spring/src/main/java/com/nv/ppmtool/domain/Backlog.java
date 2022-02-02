@@ -31,14 +31,14 @@ public class Backlog {
         projectTaskSequence++;
     }
 
-    public Long getId()                         { return id;                }
-    public Integer getProjectTaskSequence()              { return projectTaskSequence;        }
-    public String getProjectIdentifier()        { return projectIdentifier; }
-    public Project getProject()                 { return project;           }
-    public List<ProjectTask> getProjectTasks()  { return projectTasks;      }
+    public Long getId()                         { return id;                    }
+    public Integer getProjectTaskSequence()     { return projectTaskSequence;   }
+    public String getProjectIdentifier()        { return projectIdentifier;     }
+    public Project getProject()                 { return project;               }
+    public List<ProjectTask> getProjectTasks()  { return projectTasks;          }
 
-    public void setProjectTaskSequence(Integer projectTaskSequence)               { this.projectTaskSequence = projectTaskSequence;                 }
-    public void setProjectIdentifier(String projectIdentifier)  { this.projectIdentifier = projectIdentifier;   }
-    public void setProject(Project project)                     { this.project = project;                       }
-    public void setProjectTasks(List<ProjectTask> projectTasks) { this.projectTasks = projectTasks;             }
+    public void setProjectTaskSequence(Integer projectTaskSequence) { this.projectTaskSequence = projectTaskSequence;   }
+    public void setProjectIdentifier(String projectIdentifier)      { this.projectIdentifier = projectIdentifier;       }
+    public void setProject(Project project)                         { this.project = project;                           }
+    public void setProjectTasks(List<ProjectTask> projectTasks)     { this.projectTasks = projectTasks;                 }
 }
