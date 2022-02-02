@@ -14,6 +14,7 @@ Stop points:
 * 20220128 0000 : next up pt43, latest branch pt0042, master up to date
 * 20220128 0900 : next up pt46, latest branch pt0045, master up to date
 * 20220130 1455 : next up pt52, latest branch pt0050, master up to date
+* 20220203 0042 : next up pt68, latest branch pt0067, master up to date
 
 Very important branches:
 * pt0031 : Create Redux Store
