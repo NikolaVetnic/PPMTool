@@ -35,8 +35,14 @@ class AddProjectTask extends Component {
             status: this.state.status,
             priority: this.state.priority,
             dueDate: this.state.dueDate,
-            projectIdentifier: this.state.projectIdentifier,
         };
+
+        this.props.addProjectTask(
+            // this function is actually defined in backlogActions.js
+            this.state.projectIdentifier,
+            newProjectTask,
+            this.props.history
+        );
     }
 
     render() {
@@ -58,7 +64,7 @@ class AddProjectTask extends Component {
                             <p className="lead text-center">
                                 Project Name + Project Code
                             </p>
-                            <form>
+                            <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input
                                         type="text"
@@ -135,6 +141,11 @@ class AddProjectTask extends Component {
 
 AddProjectTask.propTypes = {
     addProjectTask: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+    errors: state.errors,
+});
 
 export default connect(null, { addProjectTask })(AddProjectTask);
