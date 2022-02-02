@@ -16,8 +16,19 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
     public final ResponseEntity<Object> handleProjectIdException(
             ProjectIdException e, WebRequest request) {
 
-        ProjectIdExceptionResponse projectIdExceptionResponse = new ProjectIdExceptionResponse(e.getMessage());
+        ProjectIdExceptionResponse projectIdExceptionResponse =
+                new ProjectIdExceptionResponse(e.getMessage());
 
         return new ResponseEntity<>(projectIdExceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleProjectNotFoundException(
+            ProjectNotFoundException e, WebRequest request) {
+
+        ProjectNotFoundExceptionResponse projectNotFoundExceptionResponse =
+                new ProjectNotFoundExceptionResponse(e.getMessage());
+
+        return new ResponseEntity<>(projectNotFoundExceptionResponse, HttpStatus.BAD_REQUEST);
     }
 }
