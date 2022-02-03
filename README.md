@@ -6,7 +6,8 @@
 2. Spring Back-End. Basic CRUD operations. Project entity : `pt0007 - pt0018`
 3. React & Redux Front-End. Project entity CRUD operations : `pt0023 - pt0045`
 4. Spring Back-End. Add ProjectTasks : `pt0046 - pt0059`
-5. React & Redux Front-End. Add PRojectTasks : `pt0062 - `
+5. React & Redux Front-End. Add PRojectTasks : `pt0062 - pt0076`
+6. Spring Security + JWT : 
 
 ## Stop points
 
@@ -18,6 +19,7 @@
 -   20220130 1455 : next up pt52, the latest branch `pt0050`, `master` up to date
 -   20220203 0042 : next up pt68, the latest branch `pt0067`, `master` up to date
 -   20220203 0949 : next up pt72, the latest branch `pt0071`, `master` up to date
+-   20220203 2245 : next up pt77, the latest branch `pt0076`, `master` up to date
 
 ## Very important branches
 
