@@ -34,26 +34,54 @@
 * set up the action - backlogActions.js :
    
 
-      export const getBacklog = (backlog_id) => async (dispatch) => { ... }
+    export const getBacklog = (backlog_id) => async (dispatch) => { ... }
 * go to the component that uses the action - ProjectBoard.js :
    
 
-      import { connect } from "react-redux";
-      import { getBacklog } from "../../actions/backlogActions";
-      import PropTypes from "prop-types";
-      ...
-      constructor()
-      compDidMount() {
-      const {id} = this.props.match.params;
-      this.props.getBacklog(id);
-      }
-      ...
-      ComponentName.propTypes = {
-      neededObject: PropTypes.object.isRequired,
-      neededFunc: PropTypes.func.isRequired
-      }
-      mapStateToProps = state => ({
-      whatIsNeeded: state.whatIsNeeded,
-      errors: state.errors
-      })
-      export default connect(null, {action})(ComponentName);
+    import { connect } from "react-redux";
+    import { getBacklog } from "../../actions/backlogActions";
+    import PropTypes from "prop-types";
+    ...
+    constructor()
+    compDidMount() {
+        const {id} = this.props.match.params;
+        this.props.getBacklog(id);
+    }
+    ...
+    ComponentName.propTypes = {
+        neededObject: PropTypes.object.isRequired,
+        neededFunc: PropTypes.func.isRequired
+    }
+    mapStateToProps = state => ({
+        whatIsNeeded: state.whatIsNeeded,
+        errors: state.errors
+    })
+    export default connect(null, {action})(ComponentName);
+
+### Display ProjectTasks on the ProjectBoard
+
+* pass the ProjectTasks to the Backlog component as props :
+
+
+    render() {
+        const { id } = this.props.match.params;
+        const { project_tasks } = this.props.backlog;
+        return (
+            ...
+            <Backlog project_tasks={project_tasks} />
+            ...
+        );
+    }
+* extract the ProjectTasks from props in Backlog component and map to ProjectTask component:
+
+
+    render() {
+        const { project_tasks } = this.props;
+        const tasks = project_tasks.map((project_task) => (
+            <ProjectTask 
+                key={project_task.id} 
+                project_task={project_task} 
+            />
+        ));
+        ...
+    }
