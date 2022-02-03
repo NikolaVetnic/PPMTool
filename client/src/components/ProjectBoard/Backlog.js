@@ -1,5 +1,6 @@
 import ProjectTask from "./ProjectTasks/ProjectTask";
 import React, { Component } from "react";
+import BacklogColumn from "./BacklogColumn";
 
 class Backlog extends Component {
     getTasksOfStatus(project_tasks, status) {
@@ -22,30 +23,21 @@ class Backlog extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
-                        <div className="card text-center mb-2">
-                            <div className="card-header bg-secondary text-white">
-                                <h4>TO DO</h4>
-                            </div>
-                        </div>
-                        {tasksToDo}
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card text-center mb-2">
-                            <div className="card-header bg-primary text-white">
-                                <h4>IN PROGRESS</h4>
-                            </div>
-                        </div>
-                        {tasksInPr}
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card text-center mb-2">
-                            <div className="card-header bg-success text-white">
-                                <h4>DONE</h4>
-                            </div>
-                        </div>
-                        {tasksDone}
-                    </div>
+                    <BacklogColumn
+                        tasks={tasksToDo}
+                        title="TO DO"
+                        className="card-header bg-secondary text-white"
+                    />
+                    <BacklogColumn
+                        tasks={tasksInPr}
+                        title="IN PROGRESS"
+                        className="card-header bg-primary text-white"
+                    />
+                    <BacklogColumn
+                        tasks={tasksDone}
+                        title="DONE"
+                        className="card-header bg-success text-white"
+                    />
                 </div>
             </div>
         );

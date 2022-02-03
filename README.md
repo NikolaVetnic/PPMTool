@@ -17,6 +17,7 @@
 -   20220128 0900 : next up pt46, the latest branch `pt0045`, `master` up to date
 -   20220130 1455 : next up pt52, the latest branch `pt0050`, `master` up to date
 -   20220203 0042 : next up pt68, the latest branch `pt0067`, `master` up to date
+-   20220203 0949 : next up pt72, the latest branch `pt0071`, `master` up to date
 
 ## Very important branches
 
@@ -26,6 +27,7 @@
 -   `pt0052` : Get Project Backlog, the happy path (optimisation via @JsonIgnore)
 -   `pt0054` : Handle ProjectNotFoundException (handling exceptions summary)
 -   `pt0062` : Types and Reducers for ProjectTasks (setting up types and reducers summary)
+-   `pt0071` : Organize ProjectTasks by status and priority (add my own BacklogColumn component)
 
 ## Quick Reference
 
