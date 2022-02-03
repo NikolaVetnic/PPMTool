@@ -28,6 +28,7 @@
 -   `pt0054` : Handle ProjectNotFoundException (handling exceptions summary)
 -   `pt0062` : Types and Reducers for ProjectTasks (setting up types and reducers summary)
 -   `pt0071` : Organize ProjectTasks by status and priority (add my own BacklogColumn component)
+-   `pt0072` : ProjectBoard algorithm (tampering with URL and returning errors in case there are any)
 
 ## Quick Reference
 
