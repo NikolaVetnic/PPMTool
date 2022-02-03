@@ -88,3 +88,13 @@
         ));
         ...
     }
+
+### UpdateProjectTasks
+
+* create React Class Component and copy the HTML into `render()` method
+* create a route for the new component in App.js (note that parameters in the path MUST MATCH the names on the Spring back-end, i.e. if method parameters are `backlog_id` and `pt_id` the names on the React front-end must be exactly the same)
+* set up the 'View / Update' link on the ProjectTask component (parameters needed are already in the loaded ProjectTask)
+* wire up backlog actions - function `getProjectTask(backlog_id, pt_id, history)`
+* get all the imports into UpdateProjectTask component and connect them properly - `{ connect }`, `{ getProjectTask }`, `classnames`, `PropTypes`
+* setup `componentDidMount()` lifecycle hook - VERY IMPORTANT to get params like this `const { backlog_id, pt_id } = this.props.match.params;`
+* 
