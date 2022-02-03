@@ -19,12 +19,22 @@ class ProjectTask extends Component {
               };
     }
 
+    formatDate(date) {
+        return date
+            .toISOString()
+            .slice(0, 19)
+            .replace(/-/g, "/")
+            .replace("T", " ");
+    }
+
     render() {
         const { project_task } = this.props;
 
         const priorityStyle = this.getPriorityStyleObject(
             project_task.priority
         );
+
+        const dateDue = ("Date due : " + project_task.dueDate).substring(0, 21);
 
         return (
             <div className="card mb-1 bg-light">
@@ -39,6 +49,7 @@ class ProjectTask extends Component {
                     <p className="card-text text-truncate ">
                         {project_task.acceptanceCriteria}
                     </p>
+                    <p className="card-text text-truncate ">{dateDue}</p>
                     <Link
                         to={`/updateProjectTask/${project_task.projectIdentifier}/${project_task.projectSequence}`}
                         className="btn btn-primary"
