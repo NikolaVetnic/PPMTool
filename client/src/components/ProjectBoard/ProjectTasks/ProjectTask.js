@@ -34,7 +34,12 @@ class ProjectTask extends Component {
             project_task.priority
         );
 
-        const dateDue = ("Date due : " + project_task.dueDate).substring(0, 21);
+        const dueDateString = "" + project_task.dueDate;
+        const dateDue =
+            "Date due : " +
+            (dueDateString === "null"
+                ? "none"
+                : project_task.dueDate.substring(0, 11));
 
         return (
             <div className="card mb-1 bg-light">

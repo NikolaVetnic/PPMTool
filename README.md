@@ -102,3 +102,10 @@
 * set up input field values - `value={this.state.attributeName}`
 * set up `onChange(e)` method
 * set up `onSubmit(e)` method
+* in backlogActions.js create an action to update ProjectTask 
+* in UpdateProjectTask at the bottom add `updateProjectTask` action to `connect()` method call and to `PropTypes`
+* in UpdateProjectTask add errors to the state and PropTypes (also at the bottom)
+* add `updateProjectTask()` call to `onSubmit()` method
+* add functionality to 'Back to Project Board' button
+* set up the classnames on the input fields in the UpdateProjectTask component
+
