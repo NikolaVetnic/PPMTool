@@ -1,21 +1,23 @@
 package com.nv.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     @Email(message = "Username needs to be an email")
     @NotBlank(message = "Username field is required")
     private String username;
@@ -58,4 +60,10 @@ public class User {
     public void setConfirmPassword(String confirmPassword)  { this.confirmPassword = confirmPassword;   }
     public void setCreated_At(Date created_At)              { this.created_At = created_At;             }
     public void setUpdated_At(Date updated_At)              { this.updated_At = updated_At;             }
+
+    @Override @JsonIgnore public Collection<? extends GrantedAuthority> getAuthorities()    { return null; }
+    @Override @JsonIgnore public boolean isAccountNonExpired()                              { return true; }
+    @Override @JsonIgnore public boolean isAccountNonLocked()                               { return true; }
+    @Override @JsonIgnore public boolean isCredentialsNonExpired()                          { return true; }
+    @Override @JsonIgnore public boolean isEnabled()                                        { return true; }
 }

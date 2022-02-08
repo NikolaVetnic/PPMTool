@@ -39,17 +39,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().headers().frameOptions().sameOrigin()        // to enable H2 database
                 .and().authorizeRequests()
-                        .antMatchers(
-                                "/",
-                                "/favicon.ico",
-                                "/**/*.png",
-                                "/**/*.gif",
-                                "/**/*.svg",
-                                "/**/*.jpg",
-                                "/**/*.html",
-                                "/**/*.css",
-                                "/**/*.js"
-                        ).permitAll()                               // in case admin console is present in future
+                .antMatchers(
+                        "/",
+                        "/favicon.ico",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js"
+                ).permitAll()                                       // in case admin console is present in future
+                .antMatchers("/api/users/**").permitAll()
                 .anyRequest().authenticated();
     }
 }
