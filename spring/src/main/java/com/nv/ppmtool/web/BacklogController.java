@@ -10,8 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.xml.ws.Response;
-import java.util.List;
 
 @CrossOrigin
 @RestController

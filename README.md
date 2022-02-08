@@ -9,7 +9,7 @@
 5. React & Redux Front-End. Add PRojectTasks : `pt0062 - pt0076`
 6. Spring Security + JWT : 
 
-## Stop points
+## Stop Points
 
 -   20220125 1500 : next up pt20, the latest branch `pt0018`, `master` up to date
 -   20220126 0041 : next up pt32, the latest branch `pt0031`, `master` up to date
@@ -21,7 +21,7 @@
 -   20220203 0949 : next up pt72, the latest branch `pt0071`, `master` up to date
 -   20220203 2245 : next up pt77, the latest branch `pt0076`, `master` up to date
 
-## Very important branches
+## Very Important Branches
 
 -   `pt0031` : Create Redux Store
 -   `pt0032` : Create Project from React
@@ -111,3 +111,7 @@
 * add functionality to 'Back to Project Board' button
 * set up the classnames on the input fields in the UpdateProjectTask component
 
+## Other Stuff
+
+Quick Spring Security introduction project : https://spring.io/guides/gs/securing-web/
+Spring Boot Authorization tutorial : https://auth0.com/blog/spring-boot-authorization-tutorial-secure-an-api-java/  
