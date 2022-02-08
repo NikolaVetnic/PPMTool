@@ -14,7 +14,7 @@ public class UserService {
 
     public User saveUser(User newUser) {
 
-//        newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
+        newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
 
         // username has to be unique (exception)
         // make sure that password and confirmPassword match
