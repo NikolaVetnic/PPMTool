@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
 
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired private JWTAuthenticationEntryPoint unauthorizedHandler;
+    @Autowired private JwtAuthenticationEntryPoint unauthorizedHandler;
     @Autowired private CustomUserDetailsService customUserDetailsService;
 
     @Override

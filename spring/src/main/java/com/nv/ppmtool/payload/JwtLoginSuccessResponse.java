@@ -1,11 +1,11 @@
 package com.nv.ppmtool.payload;
 
-public class JWTLoginSuccessResponse {
+public class JwtLoginSuccessResponse {
 
     private boolean success;
     private String token;
 
-    public JWTLoginSuccessResponse(boolean success, String token) {
+    public JwtLoginSuccessResponse(boolean success, String token) {
         this.success = success;
         this.token = token;
     }

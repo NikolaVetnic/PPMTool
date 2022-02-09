@@ -7,7 +7,7 @@ public class LoginRequest {
     @NotBlank(message = "Username field is required")
     private String username;
 
-    @NotBlank(message = "Username field is required")
+    @NotBlank(message = "Password field is required")
     private String password;
 
     public String getUsername() { return username; }
