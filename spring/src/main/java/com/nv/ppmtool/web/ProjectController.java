@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @CrossOrigin
 @RestController
@@ -22,12 +23,12 @@ public class ProjectController {
 
 
     @PostMapping("")
-    public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result) {
+    public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result, Principal principal){
 
         if (result.hasErrors())
             return mapValidationErrorService.mapValidationService(result);
 
-        Project savedProject = projectService.saveOrUpdateProject(project);
+        Project savedProject = projectService.saveOrUpdateProject(project, principal.getName());
 
         return new ResponseEntity<Project>(savedProject, HttpStatus.CREATED);
     }
