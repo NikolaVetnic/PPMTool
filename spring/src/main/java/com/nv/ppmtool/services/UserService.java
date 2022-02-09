@@ -20,12 +20,7 @@ public class UserService {
                     String.format("User with email %s already exists", newUser.getUsername()));
 
         newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
-
-
-
-        // username has to be unique (exception)
-        // make sure that password and confirmPassword match
-        // don't persist or show the confirmPassword
+        newUser.setConfirmPassword("");
 
         return userEntityRepository.save(newUser);
     }
