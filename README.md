@@ -7,7 +7,7 @@
 3. React & Redux Front-End. Project entity CRUD operations : `pt0023 - pt0045`
 4. Spring Back-End. Add ProjectTasks : `pt0046 - pt0059`
 5. React & Redux Front-End. Add PRojectTasks : `pt0062 - pt0076`
-6. Spring Security + JWT : 
+6. Spring Security + JWT : `pt0077 - `
 
 ## Stop Points
 
@@ -21,6 +21,7 @@
 -   20220203 0949 : next up pt72, the latest branch `pt0071`, `master` up to date
 -   20220203 2245 : next up pt77, the latest branch `pt0076`, `master` up to date
 -   20220209 0036 : next up pt83, the latest branch `pt0082`, `master` up to date
+-   20220210 0038 : next up pt89, the latest branch `pt0088`, `master` up to date
 
 ## Very Important Branches
 
@@ -111,6 +112,10 @@
 * add `updateProjectTask()` call to `onSubmit()` method
 * add functionality to 'Back to Project Board' button
 * set up the classnames on the input fields in the UpdateProjectTask component
+
+### Repository 'get' and 'find' verbs
+
+Never EVER fucking use the 'get' verb - it avoids use of Optional but instead cause the god fucking damn LazyInitializationException! Stay clear of this fucking thing!
 
 ## Other Stuff
 
