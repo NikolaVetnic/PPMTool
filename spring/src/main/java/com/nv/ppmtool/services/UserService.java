@@ -15,7 +15,7 @@ public class UserService {
 
     public User saveUser(User newUser) {
 
-        if (userEntityRepository.findByUsername(newUser.getUsername()).isPresent())
+        if (userEntityRepository.findByUsername(newUser.getUsername()) != null)
             throw new UsernameAlreadyExistsException(
                     String.format("User with email %s already exists", newUser.getUsername()));
 
