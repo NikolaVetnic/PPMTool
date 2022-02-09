@@ -120,4 +120,5 @@ Never EVER fucking use the 'get' verb - it avoids use of Optional but instead ca
 ## Other Stuff
 
 Quick Spring Security introduction project : https://spring.io/guides/gs/securing-web/
+
 Spring Boot Authorization tutorial : https://auth0.com/blog/spring-boot-authorization-tutorial-secure-an-api-java/  
