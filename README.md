@@ -39,12 +39,12 @@
 ### Load ProjectTasks into state
 
 * set up the action - backlogActions.js :
-
+   
 
     ```export const getBacklog = (backlog_id) => async (dispatch) => { ... }
     ```
 * go to the component that uses the action - ProjectBoard.js :
-
+   
 
     ```
     import { connect } from "react-redux";
