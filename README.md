@@ -41,11 +41,11 @@
 * set up the action - backlogActions.js :
    
 
-    export const getBacklog = (backlog_id) => async (dispatch) => { ... }
+    ```export const getBacklog = (backlog_id) => async (dispatch) => { ... }```
 * go to the component that uses the action - ProjectBoard.js :
    
 
-    import { connect } from "react-redux";
+    ```import { connect } from "react-redux";
     import { getBacklog } from "../../actions/backlogActions";
     import PropTypes from "prop-types";
     ...
@@ -63,7 +63,7 @@
         whatIsNeeded: state.whatIsNeeded,
         errors: state.errors
     })
-    export default connect(null, {action})(ComponentName);
+    export default connect(null, {action})(ComponentName);```
 
 ### Display ProjectTasks on the ProjectBoard
 
