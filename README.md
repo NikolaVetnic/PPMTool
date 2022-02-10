@@ -39,14 +39,11 @@
 ### Load ProjectTasks into state
 
 * set up the action - backlogActions.js :
-   
-
-    ```export const getBacklog = (backlog_id) => async (dispatch) => { ... }
+    ```javascript
+    export const getBacklog = (backlog_id) => async (dispatch) => { ... }
     ```
 * go to the component that uses the action - ProjectBoard.js :
-   
-
-    ```
+    ```javascript
     import { connect } from "react-redux";
     import { getBacklog } from "../../actions/backlogActions";
     import PropTypes from "prop-types";
@@ -67,12 +64,10 @@
     })
     export default connect(null, {action})(ComponentName);
     ```
-
 ### Display ProjectTasks on the ProjectBoard
 
 * pass the ProjectTasks to the Backlog component as props :
-
-
+    ```javascript
     render() {
         const { id } = this.props.match.params;
         const { project_tasks } = this.props.backlog;
@@ -82,9 +77,9 @@
             ...
         );
     }
+    ```
 * extract the ProjectTasks from props in Backlog component and map to ProjectTask component:
-
-
+    ```javascript
     render() {
         const { project_tasks } = this.props;
         const tasks = project_tasks.map((project_task) => (
@@ -95,7 +90,8 @@
         ));
         ...
     }
-
+    ```
+  
 ### UpdateProjectTask Component
 
 * create React Class Component and copy the HTML into `render()` method
