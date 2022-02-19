@@ -57,11 +57,10 @@ public class ProjectTaskService {
     }
 
 
-    public ProjectTask findProjectTaskByProjectSequence(String backlog_id, String pt_id) {
+    public ProjectTask findProjectTaskByProjectSequence(String backlog_id, String pt_id, String username) {
 
         // make sure we are searching on an existing backlog
-        if (backlogRepository.findByProjectIdentifier(backlog_id) == null)
-            throw new ProjectNotFoundException("Project with id '" + backlog_id.toUpperCase() + "' not found");
+        projectService.findProjectByIdentifier(backlog_id, username);
 
         // make sure that our task exists
         ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
@@ -79,9 +78,10 @@ public class ProjectTaskService {
     }
 
 
-    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
+    public ProjectTask updateByProjectSequence(
+            ProjectTask updatedTask, String backlog_id, String pt_id, String username) {
 
-        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id);
+        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id, username);
 
         projectTask = updatedTask;
 
@@ -89,9 +89,9 @@ public class ProjectTaskService {
     }
 
 
-    public void deleteProjectTaskByProjectSequence(String backlog_id, String pt_id) {
+    public void deleteProjectTaskByProjectSequence(String backlog_id, String pt_id, String username) {
 
-        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id);
+        ProjectTask projectTask = findProjectTaskByProjectSequence(backlog_id, pt_id, username);
 
         projectTaskRepository.delete(projectTask);
     }
