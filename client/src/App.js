@@ -6,8 +6,11 @@ import AddProject from "./components/Project/AddProject";
 import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
+import Landing from "./components/Layout/Landing";
+import Login from "./components/UserManagement/Login";
 import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
 import React, { Component } from "react";
+import Register from "./components/UserManagement/Register";
 import store from "./store";
 import UpdateProject from "./components/Project/UpdateProject";
 import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProjectTask";
@@ -18,6 +21,15 @@ function App() {
             <Router>
                 <div className="App">
                     <Header />
+                    {
+                        // Public Routes
+                    }
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" component={Login} />
+                    {
+                        // Private Routes
+                    }
                     <Route exact path="/addProject" component={AddProject} />
                     <Route
                         exact
