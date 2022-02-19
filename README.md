@@ -7,7 +7,8 @@
 3. React & Redux Front-End. Project entity CRUD operations : `pt0023 - pt0045`
 4. Spring Back-End. Add ProjectTasks : `pt0046 - pt0059`
 5. React & Redux Front-End. Add PRojectTasks : `pt0062 - pt0076`
-6. Spring Security + JWT : `pt0077 - `
+6. Spring Security + JWT : `pt0077 - pt0092`
+7. Securing React App : `pt0093 - `
 
 ## Stop Points
 
