@@ -18,44 +18,40 @@ public class ProjectTaskService {
     @Autowired private BacklogRepository backlogRepository;
     @Autowired private ProjectRepository projectRepository;
     @Autowired private ProjectTaskRepository projectTaskRepository;
+    @Autowired private ProjectService projectService;
 
 
-    public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
+    public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask, String username) {
 
-        try {
-            // ProjectTasks to be added to a specific project, project != null -> Backlog exists
-            Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier.toUpperCase());
+        // ProjectTasks to be added to a specific project, project != null -> Backlog exists
+        Backlog backlog = projectService
+                .findProjectByIdentifier(projectIdentifier.toUpperCase(), username).getBacklog();
 
-            // set the Backlog to ProjectTask
-            projectTask.setBacklog(backlog);
+        // set the Backlog to ProjectTask
+        projectTask.setBacklog(backlog);
 
-            // update the Backlog sequence
-            backlog.incPTSequence();
+        // update the Backlog sequence
+        backlog.incPTSequence();
 
-            // add sequence to ProjectTask (we want our project sequence to be like this: IDPRO-1, IDPRO-2...)
-            projectTask.setProjectSequence(projectIdentifier + "-" + backlog.getProjectTaskSequence());
-            projectTask.setProjectIdentifier(projectIdentifier);
+        // add sequence to ProjectTask (we want our project sequence to be like this: IDPRO-1, IDPRO-2...)
+        projectTask.setProjectSequence(projectIdentifier + "-" + backlog.getProjectTaskSequence());
+        projectTask.setProjectIdentifier(projectIdentifier);
 
-            // initial priority when priority is null
-            if (projectTask.getPriority() == null || projectTask.getPriority() == 0)
-                projectTask.setPriority(3);
+        // initial priority when priority is null
+        if (projectTask.getPriority() == null || projectTask.getPriority() == 0)
+            projectTask.setPriority(3);
 
-            // initial status when status is null
-            if (projectTask.getStatus() == null || projectTask.getStatus() == "")
-                projectTask.setStatus("TO_DO");
+        // initial status when status is null
+        if (projectTask.getStatus() == null || projectTask.getStatus() == "")
+            projectTask.setStatus("TO_DO");
 
-            return projectTaskRepository.save(projectTask);
-
-        } catch (Exception e) {
-            throw new ProjectNotFoundException("Project not found");
-        }
+        return projectTaskRepository.save(projectTask);
     }
 
 
-    public Iterable<ProjectTask> findBacklogById(String id) {
+    public Iterable<ProjectTask> findBacklogById(String id, String username) {
 
-        if (projectRepository.findByProjectIdentifier(id.toUpperCase()) == null)
-            throw new ProjectNotFoundException("Project with id '" + id.toUpperCase() + "' not found");
+        projectService.findProjectByIdentifier(id, username);
 
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
